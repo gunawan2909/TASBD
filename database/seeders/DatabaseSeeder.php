@@ -27,12 +27,12 @@ class DatabaseSeeder extends Seeder
         kelas::create(['nama' => 'Wustho']);
         kelas::create(['nama' => 'Aliyah']);
         kelas::create(['nama' => 'Takhasus']);
-        
-        iptunel::create(['ip' => 'Takhasus']);
 
-        paketwifi::create(['nama' => 'paket Langgeng', 'nilai' => '30', 'foto' => '/src/Avatar.svg', 'jenis' => 'kouta', 'harga' => '20000']);
-        paketwifi::create(['nama' => 'paket Jadian', 'nilai' => '20', 'foto' => '/src/Avatar.svg', 'jenis' => 'kouta', 'harga' => '15000']);
-        paketwifi::create(['nama' => 'paket PDKT', 'nilai' => '10', 'foto' => '/src/Avatar.svg', 'jenis' => 'kouta', 'harga' => '10000']);
+        iptunel::create(['ip' => '6.6.6.2', 'user' => 'IT', 'password' => 'IT@nh2021', 'port' => '8728']);
+
+        paketwifi::create(['nama' => 'paket Langgeng', 'nilai' => '30', 'foto' => 'paket/Avatar.svg', 'jenis' => 'kouta', 'harga' => '20000']);
+        paketwifi::create(['nama' => 'paket Jadian', 'nilai' => '20', 'foto' => 'paket/Avatar.svg', 'jenis' => 'kouta', 'harga' => '15000']);
+        paketwifi::create(['nama' => 'paket PDKT', 'nilai' => '10', 'foto' => 'paket/Avatar.svg', 'jenis' => 'kouta', 'harga' => '10000']);
         // paketwifi::create(['nama' => 'paket Langgeng sakteruse', 'nilai' => '30', 'foto' => '/src/Avatar.svg', 'jenis' => 'kouta', 'harga' => '20000']);
 
 

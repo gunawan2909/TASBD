@@ -61,6 +61,8 @@ Route::get('/admin/paket', [admin::class, 'paket'])->middleware(['auth', 'admin'
 Route::post('/admin/paket', [admin::class, 'storepaket'])->middleware(['auth', 'admin']);
 Route::get('/admin/paket/tambah', [admin::class, 'paketadd'])->middleware(['auth', 'admin']);
 Route::get('/admin/paket/edit/{id}', [admin::class, 'paketedit'])->middleware(['auth', 'admin']);
+Route::get('/admin/ip', [admin::class, 'indexip'])->middleware(['auth', 'admin']);
+Route::post('/admin/ip', [admin::class, 'updateip'])->middleware(['auth', 'admin']);
 
 
 // Route::get('/', [coba::class, 'index']);

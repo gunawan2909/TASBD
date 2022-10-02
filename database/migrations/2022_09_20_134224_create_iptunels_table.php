@@ -17,7 +17,8 @@ return new class extends Migration
             $table->id();
             $table->string('ip');
             $table->string('user');
-            $table->string('pass');
+            $table->string('password');
+            $table->string('port');
             $table->timestamps();
         });
     }

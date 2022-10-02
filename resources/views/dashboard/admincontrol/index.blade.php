@@ -12,6 +12,12 @@
                 {{ $panel === 'paket' ? ' border-sky-600' : ' border-stone-600' }}
                 ">Paket
                 Wifi</a>
+            <a href="/admin/ip"
+                class=" border-b-4 p-3 hover:border-sky-400 
+                {{ $panel === 'ip' ? ' border-sky-600' : ' border-stone-600' }}
+                ">IP
+                Tunel
+                Wifi</a>
 
         </div>
         @yield('admincontrol')

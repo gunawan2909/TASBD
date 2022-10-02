@@ -1,5 +1,5 @@
-@extends('dashboard.datasantri.index')
-@section('datasantri')
+@extends('dashboard.admincontrol.index')
+@section('admincontrol')
     <form action="/admin/paket" method="post" class="mt-3" enctype="multipart/form-data">
         @csrf
         <h1 class="text-xl ">Tambah Paket</h1>

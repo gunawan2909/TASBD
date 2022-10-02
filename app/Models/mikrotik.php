@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class mikrotik extends Model
 {
@@ -11,10 +12,6 @@ class mikrotik extends Model
     use HasFactory;
     var $debug     = false; //  Show debug information
     var $connected = false; //  Connection state
-    var $port      = 200;  //  Port to connect to (default 8729 for ssl)
-    var $ip        = '116.193.190.206';  //  Port to connect to (default 8729 for ssl)
-    var $user      = 'Gun';  //  Port to connect to (default 8729 for ssl)
-    var $pass      = '@Ind170845';  //  Port to connect to (default 8729 for ssl)
     var $ssl       = false; //  Connect using SSL (must enable api-ssl in IP/Services)
     var $timeout   = 3;     //  Connection attempt timeout and data read timeout
     var $attempts  = 5;     //  Connection attempt count
@@ -89,15 +86,16 @@ class mikrotik extends Model
      */
     public function connect()
     {
-        $ip = $this->ip;
-        $login = $this->user;
-        $password = $this->pass;
+        $ip = DB::table('iptunels')->value('ip');
+        $login = DB::table('iptunels')->value('user');
+        $password = DB::table('iptunels')->value('password');
+        $port = DB::table('iptunels')->value('port');
         for ($ATTEMPT = 1; $ATTEMPT <= $this->attempts; $ATTEMPT++) {
             $this->connected = false;
             $PROTOCOL = ($this->ssl ? 'ssl://' : '');
             $context = stream_context_create(array('ssl' => array('ciphers' => 'ADH:ALL', 'verify_peer' => false, 'verify_peer_name' => false)));
-            $this->debug('Connection attempt #' . $ATTEMPT . ' to ' . $PROTOCOL . $ip . ':' . $this->port . '...');
-            $this->socket = @stream_socket_client($PROTOCOL . $ip . ':' . $this->port, $this->error_no, $this->error_str, $this->timeout, STREAM_CLIENT_CONNECT, $context);
+            $this->debug('Connection attempt #' . $ATTEMPT . ' to ' . $PROTOCOL . $ip . ':' . $port . '...');
+            $this->socket = @stream_socket_client($PROTOCOL . $ip . ':' . $port, $this->error_no, $this->error_str, $this->timeout, STREAM_CLIENT_CONNECT, $context);
             if ($this->socket) {
                 socket_set_timeout($this->socket, $this->timeout);
                 $this->write('/login', false);

@@ -30,7 +30,7 @@ class kouta extends Command
     public function handle()
     {
         $mikrotik = new mikrotik();
-        $mikrotik->connect();
+        $mikrotik->connect( );
         $datamikrotiks = $mikrotik->comm('/ip/hotspot/user/print');
 
         foreach (wifi::all() as $data) {

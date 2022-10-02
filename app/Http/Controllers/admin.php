@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\iptunel;
 use App\Models\paketwifi;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -96,5 +97,27 @@ class admin extends Controller
         }
         paketwifi::create($data);
         return redirect('/admin/paket')->with('sukses', 'Paket Telah berhasil di tambahkan');
+    }
+
+    public function indexip()
+    {
+        return view('dashboard.admincontrol.ip', [
+            'datauser' => User::where('nis', auth()->user()->nis)->get(),
+            'panel' => 'ip',
+            'ip' => iptunel::all()
+        ]);
+    }
+
+    public function updateip(Request $request)
+    {
+        $data = $request->validate([
+            'ip' => 'required',
+            'port' => 'required',
+            'user' => 'required',
+            'password' => 'required'
+        ]);
+
+        iptunel::where('id', 1)->update($data);
+        return redirect('/admin/ip')->with('sukses', 'IP Telah berhasil di ganti');
     }
 }

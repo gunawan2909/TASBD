@@ -1,5 +1,5 @@
-@extends('dashboard.datasantri.index')
-@section('datasantri')
+@extends('dashboard.admincontrol.index')
+@section('admincontrol')
     <form action="/admin/paket" method="post" class="mt-3" enctype="multipart/form-data">
         @csrf
         <h1 class="text-xl ">Tambah Paket</h1>
@@ -46,14 +46,20 @@
                     <label for="formFile" class="form-label inline-block mb-2 text-gray-700">Gambar Paket</label>
                     <input name="foto"
                         class="form-control @error('foto')is-invalid @enderror block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-                        type="file" id="formFile">
+                        type="file" id="image" onchange="previewImage()">
                     @error('foto')
                         <label class=" text-xs text-red-600">{{ $message }}</label>
                     @enderror
 
                 </div>
-
-
+            </div>
+            <div class="flex">
+                @if ($paket->foto)
+                    <img class="img-preview" src="{{ asset('storage/' . $paket->foto) }}"
+                        style="display: block; width: 200px">
+                @else
+                    <img class="img-preview" style="display: block; width: 200px">
+                @endif
             </div>
         </div>
         <button type="submit"
