@@ -3,6 +3,8 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
+use App\Models\iptunel;
 use App\Models\User;
 use App\Models\wifi;
 use App\Models\kelas;
@@ -25,6 +27,8 @@ class DatabaseSeeder extends Seeder
         kelas::create(['nama' => 'Wustho']);
         kelas::create(['nama' => 'Aliyah']);
         kelas::create(['nama' => 'Takhasus']);
+        
+        iptunel::create(['ip' => 'Takhasus']);
 
         paketwifi::create(['nama' => 'paket Langgeng', 'nilai' => '30', 'foto' => '/src/Avatar.svg', 'jenis' => 'kouta', 'harga' => '20000']);
         paketwifi::create(['nama' => 'paket Jadian', 'nilai' => '20', 'foto' => '/src/Avatar.svg', 'jenis' => 'kouta', 'harga' => '15000']);

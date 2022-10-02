@@ -11,7 +11,10 @@ class mikrotik extends Model
     use HasFactory;
     var $debug     = false; //  Show debug information
     var $connected = false; //  Connection state
-    var $port      = 8728;  //  Port to connect to (default 8729 for ssl)
+    var $port      = 200;  //  Port to connect to (default 8729 for ssl)
+    var $ip        = '116.193.190.206';  //  Port to connect to (default 8729 for ssl)
+    var $user      = 'Gun';  //  Port to connect to (default 8729 for ssl)
+    var $pass      = '@Ind170845';  //  Port to connect to (default 8729 for ssl)
     var $ssl       = false; //  Connect using SSL (must enable api-ssl in IP/Services)
     var $timeout   = 3;     //  Connection attempt timeout and data read timeout
     var $attempts  = 5;     //  Connection attempt count
@@ -84,8 +87,11 @@ class mikrotik extends Model
      *
      * @return boolean                If we are connected or not
      */
-    public function connect($ip, $login, $password)
+    public function connect()
     {
+        $ip = $this->ip;
+        $login = $this->user;
+        $password = $this->pass;
         for ($ATTEMPT = 1; $ATTEMPT <= $this->attempts; $ATTEMPT++) {
             $this->connected = false;
             $PROTOCOL = ($this->ssl ? 'ssl://' : '');
@@ -441,7 +447,7 @@ class mikrotik extends Model
             ".id" =>  $id
         ));
     }
-   
+
 
     public function add($nis, $nama, $password)
     {

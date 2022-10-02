@@ -72,7 +72,7 @@ class login extends Controller
                     wifi::create($wifi);
                     User::where('nis', request('nis'))->update($pass);
                     $mikrotik = new mikrotik();
-                    $mikrotik->connect('6.6.6.2', 'IT', 'IT@nh2021');
+                    $mikrotik->connect();
                     $mikrotik->add(request('nis'), $data['name'], request('password'));
                     return redirect('/login')->with('alert', 'Sukses membuat Akun');
                 } else {

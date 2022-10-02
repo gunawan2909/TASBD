@@ -46,7 +46,7 @@ class wificontroler extends Controller
 
         $mikrotik = new mikrotik();
 
-        $mikrotik->connect('6.6.6.2', 'IT', 'IT@nh2021');
+        $mikrotik->connect();
         $mikrotik->comm('/ip/hotspot/active/remove', array(
             ".id" =>  $id
         ));
@@ -69,7 +69,7 @@ class wificontroler extends Controller
 
         $access = 'IT@nh2021';
         $mikrotik = new mikrotik();
-        $mikrotik->connect('6.6.6.2', 'IT', 'IT@nh2021');
+        $mikrotik->connect();
         $datamikrotiks = $mikrotik->comm('/ip/hotspot/user/print');
 
         if ($access == $request->token) {
