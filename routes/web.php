@@ -65,4 +65,6 @@ Route::get('/admin/ip', [admin::class, 'indexip'])->middleware(['auth', 'admin']
 Route::post('/admin/ip', [admin::class, 'updateip'])->middleware(['auth', 'admin']);
 
 
-// Route::get('/', [coba::class, 'index']);
+Route::get('/', function () {
+    return redirect('/home');
+});
