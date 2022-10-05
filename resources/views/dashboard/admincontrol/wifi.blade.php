@@ -10,7 +10,13 @@
         <div class="grid grid-cols-4 gap-4">
             @foreach ($datapaket as $paket)
                 <div class="flex">
-
+                    <form action="/admin/paketdelete/{{ $paket->id }}" method="post" class="mt-5">
+                        @csrf
+                        <button onClick="return confirm('Apakah Anda benar ingin menghapus data {{ $paket->id }}?')"
+                            type="submit" class="bg-red-600 w-8 h-8 p-1 m-1 rounded-lg ">
+                            <i data-feather="trash-2" class=" stroke-red-300 hover:stroke-red-100 "></i>
+                        </button>
+                    </form>
                     <a type="submit" href="/admin/paket/edit/{{ $paket->id }}"
                         class="block rounded-lg shadow-lg bg-white max-w-sm text-center hover:bg-slate-200">
                         <div class=" bg-sky-700 w-fit rounded-r-full mt-4">

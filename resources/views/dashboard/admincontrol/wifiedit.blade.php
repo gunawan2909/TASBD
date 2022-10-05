@@ -1,11 +1,13 @@
 @extends('dashboard.admincontrol.index')
 @section('admincontrol')
-    <form action="/admin/paket" method="post" class="mt-3" enctype="multipart/form-data">
+    <form action="/admin/updatepaket" method="post" class="mt-3" enctype="multipart/form-data">
         @csrf
         <h1 class="text-xl ">Tambah Paket</h1>
         <div class="flex flex-col m-2">
             <div class="flex ">
                 <input type="hidden" name="jenis" value="1">
+                <input type="hidden" name="fotolama" value="{{ $paket->foto }}">
+                <input type="hidden" name="id" value="{{ $paket->id }}">
                 <div class="mb-3 mr-10 xl:w-96 ">
                     <label for="nama">Nama Paket</label>
                     <input value="{{ old('nama', $paket->nama) }}" name="nama" type="text"
@@ -64,6 +66,6 @@
         </div>
         <button type="submit"
             class=" px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Submit</button>
-
+        
     </form>
 @endsection

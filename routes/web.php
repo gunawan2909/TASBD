@@ -59,6 +59,8 @@ Route::post('/admin', [admin::class, 'store'])->middleware(['auth', 'admin']);
 Route::post('/admin/delete/{nis}', [admin::class, 'delete'])->middleware(['auth', 'admin']);
 Route::get('/admin/paket', [admin::class, 'paket'])->middleware(['auth', 'admin']);
 Route::post('/admin/paket', [admin::class, 'storepaket'])->middleware(['auth', 'admin']);
+Route::post('/admin/updatepaket', [admin::class, 'updatepaket'])->middleware(['auth', 'admin']);
+Route::post('/admin/paketdelete/{id}', [admin::class, 'deletepaket'])->middleware(['auth', 'admin']);
 Route::get('/admin/paket/tambah', [admin::class, 'paketadd'])->middleware(['auth', 'admin']);
 Route::get('/admin/paket/edit/{id}', [admin::class, 'paketedit'])->middleware(['auth', 'admin']);
 Route::get('/admin/ip', [admin::class, 'indexip'])->middleware(['auth', 'admin']);

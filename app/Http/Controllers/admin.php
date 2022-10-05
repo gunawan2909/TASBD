@@ -42,6 +42,12 @@ class admin extends Controller
         User::where('nis', $nis)->update($admin);
         return redirect('/admin')->with('sukses', 'Remote Akses berhasil dihapus');
     }
+    public function deletepaket($id)
+    {
+
+        paketwifi::destroy($id);
+        return redirect('/admin/paket')->with('sukses', 'Remote Akses berhasil dihapus');
+    }
 
     public function paket()
     {
@@ -89,13 +95,15 @@ class admin extends Controller
             'jenis' => 'required',
             'harga' => 'required|integer',
             'nilai' => 'required|integer',
-            'foto' => 'required|image|max:5024',
+
 
         ]);
         if ($request->file('foto')) {
             $data['foto'] = $request->file('foto')->store('paket');
+        } else {
+            $data['foto'] = $request->fotolama;
         }
-        paketwifi::create($data);
+        paketwifi::where('id', $request->id)->update($data);
         return redirect('/admin/paket')->with('sukses', 'Paket Telah berhasil di tambahkan');
     }
 
