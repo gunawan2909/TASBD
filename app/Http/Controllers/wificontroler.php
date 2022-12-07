@@ -9,6 +9,7 @@ use App\Models\paketwifi;
 use Illuminate\Http\Request;
 use App\Models\pembayaranwifi;
 use App\Models\wifi as ModelsWifi;
+use Illuminate\Support\Facades\DB;
 
 class wificontroler extends Controller
 {
@@ -18,16 +19,15 @@ class wificontroler extends Controller
         $mikrotik = new mikrotik();
         $mikrotik->connect('6.6.6.2', 'IT', 'IT@nh2021');
         return view('dashboard.home.status', [
-            'datadevice' => $mikrotik->active(auth()->user()->nis),
-            'datauser' => User::where('nis', auth()->user()->nis)->get(),
+            'datauser' => DB::select('select * from users inner join wifis on wifis.nis = users.nis inner join paketwifis on wifis.paket = paketwifis.id where users.nis = ?', [auth()->user()->nis]),
             'panel' => 'status'
         ]);
     }
     public  function req()
     {
         return view('dashboard.home.request', [
-            'datauser' => User::where('nis', auth()->user()->nis)->get(),
-            'datapaket' => paketwifi::all(),
+            'datauser' => DB::select('select * from users where nis = ?', [auth()->user()->nis]),
+            'datapaket' => DB::select('select * from paketwifis'),
             'panel' => 'req'
 
         ]);
@@ -35,8 +35,8 @@ class wificontroler extends Controller
     public function report()
     {
         return view('dashboard.home.report', [
-            'datauser' => User::where('nis', auth()->user()->nis)->get(),
-            'datareport' => pembayaranwifi::where('nis', auth()->user()->nis)->get(),
+            'datauser' => DB::select('select * from users where nis = ?', [auth()->user()->nis]),
+            'datareport' => DB::select('select * from  pembayaranwifis inner join paketwifis on pembayaranwifis.paket = paketwifis.id  where  nis =? ', [auth()->user()->nis]),
             'panel' => 'report'
         ]);
     }

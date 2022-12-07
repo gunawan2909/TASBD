@@ -42,6 +42,7 @@ Route::get('/pembayaran', [pembayaran::class, 'request'])->middleware(['auth', '
 Route::post('/pembayaran/{id}', [pembayaran::class, 'tambah'])->middleware(['auth', 'admin']);
 Route::post('/pembayaran/delete/{id}', [pembayaran::class, 'destroy'])->middleware(['auth', 'admin']);
 Route::get('/pembayaran/report', [pembayaran::class, 'report'])->middleware(['auth', 'admin']);
+// Route::post('/pembayaran/report', [pembayaran::class, 'cari'])->middleware(['auth', 'admin']);
 Route::get('/pembayaran/gift', [pembayaran::class, 'gift'])->middleware(['auth', 'admin']);
 Route::post('/gift', [pembayaran::class, 'giftupdate'])->middleware(['auth', 'admin']);
 
@@ -54,17 +55,17 @@ Route::get('/datasantri/editAccount/{nis}', [datasantri::class, 'editsantri'])->
 Route::get('/datasantri/delete/{nis}', [datasantri::class, 'destroy'])->middleware(['auth', 'admin']);
 Route::post('/datasantri/update/{user}', [datasantri::class, 'update'])->middleware(['auth', 'admin']);
 
-Route::get('/admin', [admin::class, 'admin'])->middleware(['auth', 'admin']);
-Route::post('/admin', [admin::class, 'store'])->middleware(['auth', 'admin']);
-Route::post('/admin/delete/{nis}', [admin::class, 'delete'])->middleware(['auth', 'admin']);
-Route::get('/admin/paket', [admin::class, 'paket'])->middleware(['auth', 'admin']);
-Route::post('/admin/paket', [admin::class, 'storepaket'])->middleware(['auth', 'admin']);
-Route::post('/admin/updatepaket', [admin::class, 'updatepaket'])->middleware(['auth', 'admin']);
-Route::post('/admin/paketdelete/{id}', [admin::class, 'deletepaket'])->middleware(['auth', 'admin']);
-Route::get('/admin/paket/tambah', [admin::class, 'paketadd'])->middleware(['auth', 'admin']);
-Route::get('/admin/paket/edit/{id}', [admin::class, 'paketedit'])->middleware(['auth', 'admin']);
-Route::get('/admin/ip', [admin::class, 'indexip'])->middleware(['auth', 'admin']);
-Route::post('/admin/ip', [admin::class, 'updateip'])->middleware(['auth', 'admin']);
+Route::get('/admin', [admin::class, 'admin'])->middleware(['auth', 'IT']);
+Route::post('/admin', [admin::class, 'store'])->middleware(['auth', 'IT']);
+Route::post('/admin/delete/{nis}', [admin::class, 'delete'])->middleware(['auth', 'IT']);
+Route::get('/admin/paket', [admin::class, 'paket'])->middleware(['auth', 'IT']);
+Route::post('/admin/paket', [admin::class, 'storepaket'])->middleware(['auth', 'IT']);
+Route::post('/admin/updatepaket', [admin::class, 'updatepaket'])->middleware(['auth', 'IT']);
+Route::post('/admin/paketdelete/{id}', [admin::class, 'deletepaket'])->middleware(['auth', 'IT']);
+Route::get('/admin/paket/tambah', [admin::class, 'paketadd'])->middleware(['auth', 'IT']);
+Route::get('/admin/paket/edit/{id}', [admin::class, 'paketedit'])->middleware(['auth', 'IT']);
+Route::get('/admin/ip', [admin::class, 'indexip'])->middleware(['auth', 'IT']);
+Route::post('/admin/ip', [admin::class, 'updateip'])->middleware(['auth', 'IT']);
 
 
 Route::get('/', function () {

@@ -13,15 +13,15 @@
                                 <div class="flex">
 
                                     <h1 class="text-sm mr-auto">Sisa Hari</h1>
-                                    <h1 class="text-sm font-bold"> {{ $datauser[0]->wifi->kouta }} / 30 Hari</h1>
+                                    <h1 class="text-sm font-bold"> {{ $datauser[0]->kouta }} / 30 Hari</h1>
                                 </div>
                                 <div class="w-full bg-gray-200 h-2 mb-6 mt-3">
-                                    @if ($datauser[0]->wifi->kouta > 30)
+                                    @if ($datauser[0]->kouta > 30)
                                         <div class="bg-blue-600 h-2" style="width:  100%">
                                         </div>
                                     @else
                                         <div class="bg-blue-600 h-2"
-                                            style="width:  {{ ($datauser[0]->wifi->kouta / 30) * 100 }}%">
+                                            style="width:  {{ ($datauser[0]->kouta / 30) * 100 }}%">
                                         </div>
                                     @endif
                                 </div>
@@ -31,7 +31,7 @@
                     </div>
                 </div>
             </div>
-            <div class="mt-5">
+            {{-- <div class="mt-5">
                 <h1 class="text-2xl text-bold ">Decive Yang Online</h1>
                 <div class="flex">
                     <div class="block rounded-lg shadow-xl w-full text-center p-2 border-l border-r ">
@@ -53,15 +53,14 @@
                     </div>
 
                 </div>
-            </div>
+            </div> --}}
         </div>
 
         <div class="relative mt-5 mx-auto  w=-1/2">
-            <img src="{{ asset('storage/' . $datauser[0]->wifi->paketwifi[0]->foto) }}"
-                style="width: 200px; opacity: 0.5">
+            <img src="{{ asset('storage/' . $datauser[0]->foto) }}" style="width: 200px; opacity: 0.5">
             <b class="absolute left-0 bottom-20 text-lg w-32">1 mbps up to 50 mbps</b>
             <div class="absolute right-0 bottom-10 rounded-r-full bg-blue-600 p-2">
-                <b class="text-white">{{ $datauser[0]->wifi->paketwifi[0]->nama }}</b>
+                <b class="text-white">{{ $datauser[0]->nama }}</b>
             </div>
         </div>
     </div>

@@ -445,6 +445,12 @@ class mikrotik extends Model
             ".id" =>  $id
         ));
     }
+    public function enable($id)
+    {
+        $this->comm('/ip/hotspot/user/enable', array(
+            ".id" =>  $id
+        ));
+    }
 
 
     public function add($nis, $nama, $password)

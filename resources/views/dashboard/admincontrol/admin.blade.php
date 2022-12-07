@@ -1,5 +1,6 @@
 @extends('dashboard.admincontrol.index')
 @section('admincontrol')
+
     <div class="mt-3">
         @if (session('sukses'))
             <div class="alert bg-green-100 rounded-lg py-5 px-6 mb-3 text-base text-green-700 inline-flex items-center w-full alert-dismissible fade show"
@@ -19,7 +20,7 @@
                     data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
         @endif
-        @if ($datauser[0]['remote'])
+        @if ($datauser[0]->remote)
             <form action="/admin" method="post">
                 @csrf
                 <div class="flex">
